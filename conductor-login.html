@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUBOSEGURO - Login Conductor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .login-container {
+            max-width: 450px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        
+        .login-header {
+            background: linear-gradient(135deg, #2196F3, #0D47A1);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.3);
+        }
+        
+        .login-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .login-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1a237e;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #2196F3;
+            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+        }
+        
+        .login-button {
+            background: linear-gradient(135deg, #2196F3, #0D47A1);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
+        }
+        
+        .register-button {
+            background: #f8f9fa;
+            color: #666;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .register-button:hover {
+            background: #e9ecef;
+            color: #2196F3;
+        }
+        
+        .back-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #f8f9fa;
+            color: #666;
+            border: 2px solid #dee2e6;
+            border-radius: 50px;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            text-decoration: none;
+            margin-top: 25px;
+        }
+        
+        .back-button:hover {
+            background: #e9ecef;
+            color: #1a237e;
+        }
+        
+        .driver-features {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .driver-features h4 {
+            color: #1a237e;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .feature-item i {
+            color: #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container login-container">
+        <!-- ENCABEZADO -->
+        <div class="login-header">
+            <h1><i class="fas fa-id-card"></i> SUBOSEGURO Conductor</h1>
+            <p>Acceso seguro al sistema de taxis verificados</p>
+        </div>
+        
+        <!-- FORMULARIO LOGIN -->
+        <div class="login-card">
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-user"></i> Número de Licencia
+                    </label>
+                    <input type="text" class="form-input" placeholder="Ej: T-123456789" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-lock"></i> Contraseña
+                    </label>
+                    <input type="password" class="form-input" placeholder="Ingresa tu contraseña" required>
+                </div>
+                
+                <button type="button" class="login-button" onclick="loginConductor()">
+                    <i class="fas fa-sign-in-alt"></i> INGRESAR AL SISTEMA
+                </button>
+            </form>
+            
+            <button class="register-button" onclick="showRegistration()">
+                <i class="fas fa-user-plus"></i> REGISTRARSE COMO CONDUCTOR
+            </button>
+            
+            <!-- CARACTERÍSTICAS -->
+            <div class="driver-features">
+                <h4><i class="fas fa-shield-alt"></i> Características para conductores</h4>
+                <div class="feature-list">
+                    <div class="feature-item"><i class="fas fa-check"></i> Botón de pánico</div>
+                    <div class="feature-item"><i class="fas fa-check"></i> WhatsApp compañeros</div>
+                    <div class="feature-item"><i class="fas fa-check"></i> QR único por viaje</div>
+                    <div class="feature-item"><i class="fas fa-check"></i> Ubicación en tiempo real</div>
+                    <div class="feature-item"><i class="fas fa-check"></i> Alertas PNC</div>
+                    <div class="feature-item"><i class="fas fa-check"></i> Soporte 24/7</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- VOLVER AL INICIO -->
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Volver al Inicio
+        </a>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+    function loginConductor() {
+        const form = document.getElementById('loginForm');
+        if (!form.checkValidity()) {
+            alert('Por favor completa todos los campos requeridos.');
+            return;
+        }
+        
+        const licencia = form.querySelector('input[type="text"]').value.trim();
+        const password = form.querySelector('input[type="password"]').value;
+        
+        // Simular base de datos de conductores
+        const conductoresRegistrados = {
+            'T-123456789': { password: 'subo123', nombre: 'Juan Pérez Martínez', placa: 'ABC-123' },
+            'T-987654321': { password: 'seguro456', nombre: 'Carlos López', placa: 'XYZ-789' },
+            'T-555555555': { password: 'taxi789', nombre: 'María García', placa: 'DEF-456' }
+        };
+        
+        // Mostrar carga
+        const btn = document.querySelector('.login-button');
+        const textoOriginal = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> VERIFICANDO...';
+        btn.disabled = true;
+        
+        // Simular delay de verificación
+        setTimeout(() => {
+            if (conductoresRegistrados[licencia] && conductoresRegistrados[licencia].password === password) {
+                const conductor = conductoresRegistrados[licencia];
+                
+                // Guardar datos para usar en el dashboard
+                localStorage.setItem('suboseguro_conductor', JSON.stringify({
+                    nombre: conductor.nombre,
+                    licencia: licencia,
+                    placa: conductor.placa,
+                    horaLogin: new Date().toISOString(),
+                    sesionActiva: true
+                }));
+                
+                alert(`✅ ACCESO CONCEDIDO\n\nBienvenido ${conductor.nombre}\nLicencia: ${licencia}\nPlaca: ${conductor.placa}`);
+                
+                // Redirigir al dashboard
+                window.location.href = 'conductor-dash.html';
+                
+            } else {
+                alert('❌ ACCESO DENEGADO\n\nLicencia o contraseña incorrectos.\n\nSi eres nuevo conductor, contacta a tu empresa para registrarte.');
+                
+                // Restaurar botón
+                btn.innerHTML = textoOriginal;
+                btn.disabled = false;
+            }
+        }, 1500);
+    }
+    
+    function showRegistration() {
+        alert('📋 Registro de Conductor\n\nEsta función conectará con el sistema de empresas para registrar nuevos conductores.\n\nContacta a tu empresa de taxis para obtener credenciales.');
+    }
+    
+    // Cargar datos si ya hay sesión
+    document.addEventListener('DOMContentLoaded', function() {
+        const conductor = JSON.parse(localStorage.getItem('suboseguro_conductor'));
+        if (conductor && conductor.sesionActiva) {
+            console.log('Conductor ya logueado:', conductor.nombre);
+        }
+    });
+    </script>
+</body>
+</html>
